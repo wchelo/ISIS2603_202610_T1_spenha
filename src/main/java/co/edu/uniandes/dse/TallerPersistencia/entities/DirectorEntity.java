@@ -1,0 +1,19 @@
+package co.edu.uniandes.dse.TallerPersistencia.entities;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
+import lombok.Data;
+
+@Data
+@Entity
+public class DirectorEntity extends BaseEntity {
+    private String name;
+    private String nationality;
+
+    @OneToMany(mappedBy = "director", fetch = FetchType.LAZY)
+    private List<MovieEntity> movies = new ArrayList<MovieEntity>();
+}
